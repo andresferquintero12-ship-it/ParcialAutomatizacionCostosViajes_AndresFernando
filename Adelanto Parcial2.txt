@@ -1,0 +1,40 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+const int MAX_CONDUCTORES = 10;
+const int MAX_VIAJES = 10;
+
+// Validar que un valor sea positivo
+double validarDato(const string& mensaje) {
+    double valor;
+    do {
+        cout << mensaje;
+        cin >> valor;
+        if (valor < 0) {
+            cout << "Error: El valor no puede ser negativo. Intente de nuevo.\n";
+        }
+    } while (valor < 0);
+    return valor;
+}
+
+// Calcular el total ganado por conductor
+double calcularTotal(double distancias[], double costos[], int numViajes) {
+    double total = 0;
+    for (int i = 0; i < numViajes; i++) {
+        total += distancias[i] * costos[i];
+    }
+    return total;
+}
+
+// Calcular el promedio de distancia recorrida
+double promedioDistancia(double distancias[], int numViajes) {
+    if (numViajes == 0) return 0;
+    double suma = 0;
+    for (int i = 0; i < numViajes; i++) {
+        suma += distancias[i];
+    }
+    return suma / numViajes;
+}
